@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0d1721" />
+    <meta name="description" content="A thoughtful, live weather dashboard for the places you care about." />
+    <title>Atmos — Weather, in your element</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="atmosphere.css" />
+  </head>
+  <body>
+    <div id="weather-atmosphere" class="weather-atmosphere" aria-hidden="true"><div class="atmosphere-sun"></div><div class="atmosphere-cloud atmosphere-cloud-one"></div><div class="atmosphere-cloud atmosphere-cloud-two"></div><div class="atmosphere-rain"></div><div class="atmosphere-snow"></div><div class="atmosphere-lightning"></div><div class="atmosphere-heat"></div><div class="atmosphere-haze"></div></div>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="#" aria-label="Atmos home"><span class="brand-mark">a</span><span>atmos<span class="brand-period">.</span></span></a>
+        <div class="sidebar-label">YOUR WEATHER</div>
+        <nav class="nav-list" aria-label="Weather locations">
+          <button class="nav-item active" id="home-nav"><span class="nav-icon">⌂</span><span>Overview</span></button>
+          <div class="nav-section-row"><span class="sidebar-label">SAVED PLACES</span><button id="add-favorite" class="icon-button add-button" title="Save current location" aria-label="Save current location">＋</button></div>
+          <div id="favorite-list" class="favorite-list"></div>
+        </nav>
+        <div class="sidebar-bottom">
+          <div class="api-status"><span class="status-dot"></span><span id="api-status-text">Weather service ready</span></div>
+          <div class="sidebar-footnote">A clearer forecast<br />for the everyday.</div>
+          <div class="sidebar-credit">BUILT FOR THE WORLD <span>✳</span></div>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div class="breadcrumb"><span>WEATHER</span><span class="crumb-slash">/</span><span id="breadcrumb-city">OVERVIEW</span></div>
+          <div class="topbar-actions">
+            <div class="search-wrap"><span class="search-icon">⌕</span><input id="search-input" type="search" placeholder="Search a city..." autocomplete="off" aria-label="Search for a city" /><kbd>↵</kbd><div id="search-results" class="search-results" role="listbox"></div></div>
+            <button id="unit-toggle" class="unit-toggle" aria-label="Switch temperature units"><span class="unit-option selected" data-unit="metric">°C</span><span class="unit-divider"></span><span class="unit-option" data-unit="imperial">°F</span></button>
+            <button id="locate-button" class="locate-button" title="Use my location" aria-label="Use my location"><span>◎</span></button>
+            <div class="avatar">A</div>
+          </div>
+        </header>
+
+        <div class="page-body">
+          <section class="welcome-row">
+            <div><div class="eyebrow"><span class="eyebrow-line"></span> YOUR PERSONAL WEATHER STATION</div><h1>Weather, in your <em>element.</em></h1><p class="welcome-subtitle">A little more clarity for wherever the day takes you.</p></div>
+            <div class="today-date"><span class="date-icon">◷</span><span id="current-date">TODAY</span></div>
+          </section>
+
+          <section id="weather-content" class="weather-content">
+            <div class="loading-state"><div class="loading-orbit"></div><span>Finding your forecast...</span></div>
+          </section>
+
+          <footer class="page-footer"><span>WEATHER DATA BY <a href="https://openweathermap.org/" target="_blank" rel="noreferrer">OPENWEATHER</a></span><span id="last-updated">LIVE CONDITIONS <i>●</i></span><span>MADE FOR THE MOMENT <b>✳</b></span></footer>
+        </div>
+      </main>
+    </div>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
